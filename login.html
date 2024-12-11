@@ -17,7 +17,7 @@
     <script type="module">
         // Import the functions you need from the SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-        import { getAuth, GithubAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+        import { getAuth, GithubAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
         
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -36,18 +36,24 @@
         
         const githubLoginButton = document.getElementById('github-login');
         
+        // Login with redirect
         githubLoginButton.addEventListener('click', () => {
           const provider = new GithubAuthProvider();
-          signInWithPopup(auth, provider)
-            .then((result) => {
+          signInWithRedirect(auth, provider); // Use signInWithRedirect instead of signInWithPopup
+        });
+        
+        // Handle the result of the redirect
+        getRedirectResult(auth)
+          .then((result) => {
+            if (result) {
               const user = result.user;
               console.log('User logged in:', user);
               // You can redirect the user or show a personalized message here
-            })
-            .catch((error) => {
-              console.error('Error during login:', error);
-            });
-        });
+            }
+          })
+          .catch((error) => {
+            console.error('Error during login:', error);
+          });
     </script>
 
 </body>
