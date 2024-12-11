@@ -13,17 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version (if needed, for building)
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'  # Ensure the right version is set, or remove if not using Node.js
-
-      - name: npm install, build (if needed), and test (optional)
-        run: |
-          npm install
-          npm run build --if-present  # If your app has a build process like React, Vue, etc.
-          npm run test --if-present   # Optional if you have tests
-
       - name: Zip static files for deployment
         run: |
           zip -r release.zip ./*  # Make sure you are zipping all your required files (index.html, CSS, JS)
