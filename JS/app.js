@@ -35,6 +35,40 @@ $(document).ready(function() {
   }
 });
 
+const auth0 = new Auth0Client({
+  domain: 'dev-ehk4lfu315h38io1.us.auth0.com',   // You can find this in your Auth0 settings
+  client_id: 'ZHh2FBRN17IJbpEediVPMrrY0i5Jb2jX',   // You can find this in your Auth0 app settings
+});
+
+// When the user clicks the login button
+document.getElementById("login-button").addEventListener("click", async () => {
+  await auth0.loginWithRedirect({
+    redirect_uri: window.location.origin // This is the URL users will be redirected to after login
+  });
+});
+
+window.addEventListener('load', async () => {
+  // Check if the URL contains the callback information
+  const query = window.location.search;
+  if (query.includes('code') && query.includes('state')) {
+    // Parse the callback information and complete the login
+    await auth0.handleRedirectCallback();
+  }
+
+  // Get the logged-in user information
+  const user = await auth0.getUser();
+  
+  if (user) {
+    console.log(user);  // Output user details (such as name, email) in the console
+    // Optionally display the user info in the UI
+    document.getElementById('login-button').textContent = `Hello, ${user.name}`;
+    // Optionally hide the login button or show a logout button
+  }
+});
+
+
+
+
 function updateVideoLikeStatus(videoId, action) {
   // Replace 'like' with 1 and 'dislike' with -1
   const actionValue = (action === "like") ? 1 : (action === "dislike" ? -1 : 0);
