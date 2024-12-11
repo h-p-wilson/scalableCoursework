@@ -1,3 +1,6 @@
+
+
+
 // Constants for REST API Endpoints
 const PostVideo = "https://prod-27.northeurope.logic.azure.com/workflows/e0d5a56e31dc41999c5bd9533e0d82b1/triggers/When_a_HTTP_request_is_received/paths/invoke/rest/v1/videos?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=rQYSNm4hpv8_T1EhEMpF1fT2KUtSKyCYtPky1yOBccc";
 const GetAllVideos = "https://prod-42.northeurope.logic.azure.com/workflows/42c3c726fb884ded8f97eb38d7b839d3/triggers/When_a_HTTP_request_is_received/paths/invoke/rest/v1/videos?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=aNH89wOGUVmGXcjOpTrlMZ_ydCPKxe43Dm-cVJ3iVBM";
@@ -34,35 +37,6 @@ $(document).ready(function() {
     });
   }
 });
-
-const auth0 = new Auth0Client({
-  domain: 'dev-ehk4lfu315h38io1.us.auth0.com',   // You can find this in your Auth0 settings
-  client_id: 'ZHh2FBRN17IJbpEediVPMrrY0i5Jb2jX',   // You can find this in your Auth0 app settings
-});
-
-document.getElementById("login-button").addEventListener("click", async () => {
-  await auth0.loginWithRedirect({
-    redirect_uri: window.location.origin // Redirect after login
-  });
-});
-
-
-window.addEventListener('load', async () => {
-  const query = window.location.search;
-  if (query.includes('code') && query.includes('state')) {
-    await auth0.handleRedirectCallback();
-  }
-
-  // Get user info after login
-  const user = await auth0.getUser();
-  if (user) {
-    console.log(user); // Check the user object
-    document.getElementById('login-button').textContent = `Hello, ${user.name}`;
-  }
-});
-
-
-
 
 
 function updateVideoLikeStatus(videoId, action) {
