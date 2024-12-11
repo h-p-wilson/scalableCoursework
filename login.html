@@ -57,24 +57,24 @@
     
       // When the login button is clicked, use signInWithRedirect
       const githubLoginButton = document.getElementById('github-login');
-      const userInfoDiv = document.getElementById('user-info');
-      const userNameSpan = document.getElementById('user-name');
 
       githubLoginButton.addEventListener('click', () => {
         const provider = new GithubAuthProvider();
         signInWithRedirect(auth, provider);
       });
     
-// Handle the result of the redirect
-getRedirectResult(auth)
+        // Handle the result of the redirect
+        getRedirectResult(auth)
           .then((result) => {
             if (result) {
               const user = result.user;
               console.log('User logged in:', user);
 
-              // Show the user info and update the name
-              userInfoDiv.style.display = 'block';
-              userNameSpan.textContent = user.displayName || 'User';
+              // Hide login button
+              githubLoginButton.style.display = 'none';
+
+              // Redirect to the homepage
+              window.location.href = "index.html";  // Change to your homepage URL
             }
           })
           .catch((error) => {
