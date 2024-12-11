@@ -5,81 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/styles.css">
-    <script type="text/javascript" src="JS/bootstrap.js"></script>
-    <script type="text/javascript" src="JS/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="JS/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="JS/app.js"></script>
+    <script src="JS/jquery-3.6.0.min.js"></script>
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/app.js"></script>
 </head>
 <body>
     <div class="login-container">
         <h1 class="text-center mb-4">Login</h1>
         <nav>
             <ul class="list-unstyled d-flex justify-content-center">
-              <a href="index.html" class="btn btn-primary mb-2">Go to Dashboard</a>
-              <a href="post-video.html" class="btn btn-primary mb-2">Upload New Video</a>
-              <a href="search.html" class="btn btn-primary mb-2">Search</a>
-              <a href="login.html" class="btn btn-primary mb-2">Login</a>
-
+                <li><a href="index.html" class="btn btn-primary mb-2">Go to Dashboard</a></li>
+                <li><a href="post-video.html" class="btn btn-primary mb-2">Upload New Video</a></li>
+                <li><a href="search.html" class="btn btn-primary mb-2">Search</a></li>
+                <li><a href="login.html" class="btn btn-primary mb-2">Login</a></li>
             </ul>
-          </nav>
-        <p>Please login to continue</p>
+        </nav>
+        <button id="github-login" class="btn btn-primary mb-2">Login with GitHub</button>
     </div>
 
-    <button id="github-login" class="btn btn-primary mb-2" >Login with GitHub</button>
     <div id="user-info" style="display: none;">
         <h2>Welcome, <span id="user-name"></span>!</h2>
         <p>You've successfully logged in. Enjoy your visit!</p>
     </div>
 
     <script type="module">
-      // Import the functions you need from the SDKs
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-      import { getAuth, GithubAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getAuth, GithubAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
     
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyDt_vx7O5Ze1wYixvp986IpKRj2aQP9oe0",
-        authDomain: "coursework-22b2c.firebaseapp.com",
-        projectId: "coursework-22b2c",
-        storageBucket: "coursework-22b2c.firebasestorage.app",
-        messagingSenderId: "709143252394",
-        appId: "1:709143252394:web:36cf1a140518e133a66fd3",
-        measurementId: "G-QBBPD1B9FP"
-      };
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt_vx7O5Ze1wYixvp986IpKRj2aQP9oe0",
+            authDomain: "coursework-22b2c.firebaseapp.com",
+            projectId: "coursework-22b2c",
+            storageBucket: "coursework-22b2c.firebasestorage.app",
+            messagingSenderId: "709143252394",
+            appId: "1:709143252394:web:36cf1a140518e133a66fd3",
+            measurementId: "G-QBBPD1B9FP"
+        };
     
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-
-      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
     
-      // When the login button is clicked, use signInWithRedirect
-      const githubLoginButton = document.getElementById('github-login');
-
-      githubLoginButton.addEventListener('click', () => {
-        const provider = new GithubAuthProvider();
-        signInWithRedirect(auth, provider);
-      });
+        const githubLoginButton = document.getElementById('github-login');
     
-        // Handle the result of the redirect
+        // When the login button is clicked, initiate the redirect
+        githubLoginButton.addEventListener('click', () => {
+            const provider = new GithubAuthProvider();
+            signInWithRedirect(auth, provider);
+        });
+    
+        // Handle the redirect result after login
         getRedirectResult(auth)
-          .then((result) => {
-            if (result) {
-              const user = result.user;
-              console.log('User logged in:', user);
+            .then((result) => {
+                if (result) {
+                    const user = result.user;
+                    console.log('User logged in:', user);
 
-              // Hide login button
-              githubLoginButton.style.display = 'none';
+                    // Display user info and hide the login button
+                    document.getElementById('user-name').textContent = user.displayName || user.email;
+                    document.getElementById('user-info').style.display = 'block';
+                    githubLoginButton.style.display = 'none';
 
-              // Redirect to the homepage
-              window.location.href = "index.html";  // Change to your homepage URL
-            }
-          })
-          .catch((error) => {
-            console.error('Error during login:', error);
-          });
+                    // Redirect to the homepage
+                    window.location.href = "index.html";  // Adjust to your homepage URL
+                }
+            })
+            .catch((error) => {
+                console.error('Error during login:', error);
+            });
     </script>
 </body>
 </html>
