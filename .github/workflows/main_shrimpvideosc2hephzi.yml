@@ -12,10 +12,16 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This allows the job to request the ID token
+      contents: read  # This is required for accessing the repository
+  
     steps:
+      - uses: actions/checkout@v4
       - name: Login to Azure
         uses: azure/login@v2
         with:
+          auth-type: 'id-token'
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_51E3D3E6D1F94BE48F52EFD2A61683A1 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6D21C50E4A1E4B9C86EF88179595043F }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F0D0CE3D74694820B8E19576591FB802 }}
