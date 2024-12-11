@@ -17,9 +17,10 @@ jobs:
       # For a simple static site, you may not need any build steps, just copy the files
       - name: Prepare static files
         run: |
-          # Copy your static files into the 'build' folder or simply prepare them for deployment
+          # Create the 'build' folder
           mkdir -p build
-          cp -r * build/ # Copy all files into the build directory
+          # Copy the contents of the current directory (static files) into the 'build' folder
+          cp -r * build/ # Copy all files into the 'build' directory
 
       - name: Zip artifact for deployment
         run: zip release.zip ./build/*
