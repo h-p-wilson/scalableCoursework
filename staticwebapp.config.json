@@ -9,7 +9,7 @@
     },
     "defaultProvider": "github",
     "login": {
-      "redirectUri": "/index.html"
+      "redirectUri": "/home"
     }
   }
 }
