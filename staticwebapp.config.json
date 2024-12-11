@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "identityProviders": {
+      "github": {
+        "clientId": "Ov23liXEUoh0jex1DJWR",
+        "clientSecret": "71fbc266b368a761446b110b5994a5fe4672e73d",
+        "scopes": ["read:user", "user:email"]
+      }
+    },
+    "defaultProvider": "github",
+    "login": {
+      "redirectUri": "/index.html"
+    }
+  }
+}
