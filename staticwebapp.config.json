@@ -2,8 +2,8 @@
   "auth": {
     "identityProviders": {
       "github": {
-        "clientId": "Ov23liXEUoh0jex1DJWR",
-        "clientSecret": "71fbc266b368a761446b110b5994a5fe4672e73d",
+        "clientId": "Ov23liStDnSaToPKik5D",
+        "clientSecret": "7117783b16cbc89505497051fc1949c3ec9aa9fc",
         "scopes": ["read:user", "user:email"]
       }
     },
