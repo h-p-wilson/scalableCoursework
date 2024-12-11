@@ -1,0 +1,199 @@
+/* Custom Prawn Color Scheme */
+
+/* Style the like and dislike buttons */
+/* Style the like and dislike buttons */
+.like-btn, .dislike-btn {
+    background-color: #FF6F61; /* Prawn pink for buttons */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.like-btn:hover, .dislike-btn:hover {
+    background-color: #FFA07A; /* Light salmon on hover */
+}
+
+/* Style the container for likes/dislikes count */
+.like-dislike-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    background-color: rgba(255, 111, 97, 0.8); /* Prawn pink with slight transparency */
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* Styling the likes count */
+.likes-count {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFF5E1; /* Light cream for contrast */
+}
+
+.video-container {
+    position: relative;
+}
+
+/* Optional: Add space between video and buttons */
+.video-container.mb-3 {
+    margin-bottom: 40px;
+}
+
+.form-container {
+    background-color: #ffffff; /* Light background to make the form stand out */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow to add depth */
+  }
+  
+  .footer {
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: #333; /* Adjust color based on your theme */
+    margin-top: 30px; /* Space before the footer */
+  }
+  
+
+  
+
+
+
+/* Set the body background to a prawn-colored cream */
+body {
+    background-color: #FFF5E1; /* Cream */
+    color: #333; /* Dark text for readability */
+  }
+
+  .prawn-spinner {
+    display: inline-block;
+    width: 40px; /* Adjust width to make it smaller */
+    height: 40px; /* Adjust height to make it smaller */
+    animation: spin 2s linear infinite; /* Apply the spin animation */
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg); /* Start at 0 degrees */
+    }
+    100% {
+      transform: rotate(360deg); /* End at 360 degrees (full rotation) */
+    }
+  }
+  
+  
+
+  .footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Adjust to fit your prawn images */
+    background-image: url('images/prawn.png'); /* Ensure the path is correct */
+    background-repeat: repeat-x; /* Repeat image horizontally */
+    background-size: 30px 30px; /* Adjust image size */
+    background-position: relative;
+  }
+
+
+  /* Apply swirly prawn font to h1 */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #FF6F61;  /* Prawn pink color */
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);  /* Subtle shadow for depth */
+  }
+  
+  .prawn-left, .prawn-right {
+    width: 40px;  /* Adjust size of the prawn images */
+    height: auto;
+    margin: 0 10px;  /* Spacing between the images and the text */
+  }
+  
+  .prawn-right {
+    transform: scaleX(-1);  /* Mirror the right-side prawn image */
+  }
+
+  /* Customize the 'Show More' button (prawn-colored) */
+.btn-info {
+    background-color: #FF6F61 !important; /* Prawn pink */
+    border-color: #FF6F61 !important;
+  }
+  
+  .btn-info:hover {
+    background-color: #FFA07A !important; /* Light salmon on hover */
+    border-color: #FFA07A !important;
+  }
+  
+  .btn-info:focus, .btn-info:active {
+    background-color: #FF6F61 !important; /* Prawn pink */
+    border-color: #FF6F61 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 111, 97, 0.25) !important; /* Light salmon shadow */
+  }
+  
+  /* Ensure active state doesn't reset to default blue */
+  .btn-info:focus, .btn-info:active {
+    outline: none; /* Remove default focus outline */
+  }
+  
+  
+/* Customize primary button (prawn-colored) */
+.btn-primary {
+    background-color: #FF6F61 !important; /* Prawn pink */
+    border-color: #FF6F61 !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: #FFA07A !important; /* Light salmon on hover */
+    border-color: #FFA07A !important;
+  }
+  
+  .btn-primary:focus, .btn-primary:active {
+    background-color: #FF6F61 !important; /* Prawn pink */
+    border-color: #FF6F61 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 111, 97, 0.25) !important; /* Light salmon shadow */
+  }
+  
+  /* Ensure active state doesn't reset to default blue */
+  .btn-primary:focus, .btn-primary:active {
+    outline: none; /* Remove default focus outline */
+  }
+  
+  
+  /* Customize navbar background and text */
+  .navbar {
+    background-color: #FF6F61; /* Prawn pink */
+  }
+  
+  .navbar a {
+    color: #FFF; /* White text for links */
+  }
+  
+  .navbar a:hover {
+    color: #FFA07A; /* Light salmon on hover */
+  }
+  
+  /* Customize form input backgrounds */
+  .form-control {
+    background-color: #FFF5E1; /* Light cream background for inputs */
+    color: #333; /* Dark text for input fields */
+    border: 1px solid #FF6F61; /* Prawn pink border */
+  }
+  
+  .form-control:focus {
+    border-color: #FF6F61; /* Prawn pink border on focus */
+    box-shadow: 0 0 0 0.2rem rgba(255, 111, 97, 0.25); /* Light salmon shadow on focus */
+  }
+  

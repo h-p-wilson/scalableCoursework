@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post New Video</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/styles.css">
+  <script type="text/javascript" src="JS/bootstrap.js"></script>
+  <script type="text/javascript" src="JS/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="JS/jquery-3.6.0.min.js"></script>
+
+  <script type="text/javascript" src="JS/app.js"></script>
+
+</head>
+<body>
+  <header>
+    <div class="container my-5">
+      <h1 class="text-center mb-4">
+        <img class="prawn-left" src="images/prawn.png" alt="Prawn" />
+        Upload a New Video
+        <img class="prawn-right" src="images/prawn.png" alt="Prawn" />
+      </h1>
+      <nav>
+        <ul class="list-unstyled d-flex justify-content-center">
+            <a href="index.html" class="btn btn-primary mb-2">Go to Dashboard</a>      
+            <a href="post-video.html" class="btn btn-primary mb-2">Upload New Video</a>
+            <a href="search.html" class="btn btn-primary mb-2">Search</a>
+      </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <main>
+      <div class="row justify-content-center">
+        <div class="col-8" style="text-align: left;">
+          <form id="newAssetForm" class="form-container">
+            <div class="row justify-content-center">
+              <div class="col-8" style="text-align: left;">
+                <form style="font-size: 10pt;" id="newAssetForm">
+                  <div class="mb-3">
+                    <label for="FileName" class="form-label">File Name</label>
+                    <input type="text" class="form-control" id="FileName">
+                  </div>
+                  <div class="mb-3">
+                    <label for="userID" class="form-label">User Id</label>
+                    <input type="string" class="form-control" id="userID">
+                  </div>
+                  <div class="mb-3">
+                    <label for="userName" class="form-label">User Name</label>
+                    <input type="text" class="form-control" id="userName">
+                  </div>
+                  <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="publisher" class="form-label">Publisher</label>
+                    <input type="text" class="form-control" id="publisher">
+                  </div>
+                  <div class="mb-3">
+                    <label for="producer" class="form-label">Producer</label>
+                    <input type="text" class="form-control" id="producer">
+                  </div>
+                  <div class="mb-3">
+                    <label for="genre" class="form-label">Genre</label>
+                    <select class="form-control" id="genre">
+                      <option value="">Select a Genre</option>
+                      <option value="Action">Action</option>
+                      <option value="Comedy">Comedy</option>
+                      <option value="Drama">Drama</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Romance">Romance</option>
+                      <option value="Sci-Fi">Sci-Fi</option>
+                      <option value="Documentary">Documentary</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <select class="form-control" id="rating">
+                      <option value="U">U (Universal)</option>
+                      <option value="PG">PG (Parental Guidance)</option>
+                      <option value="12A">12A (12 Accompanied)</option>
+                      <option value="12">12 (12 and over)</option>
+                      <option value="15">15 (15 and over)</option>
+                      <option value="18">18 (Adults only)</option>
+                      <option value="R18">R18 (Restricted)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="UpFile" class="form-label">File to Upload</label>
+                    <input type="file" class="form-control" id="UpFile">
+                  </div>
+                  <button type="button" id="subNewForm" class="btn btn-primary w-100">Submit</button>
+                </form>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </main>
+  <div class="footer" style="background-image: url('images/prawn.png'); margin-top: 30px;">    <!-- Content here -->
+  </div>
+</body>
+</html>
