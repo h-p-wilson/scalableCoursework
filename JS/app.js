@@ -40,31 +40,27 @@ const auth0 = new Auth0Client({
   client_id: 'ZHh2FBRN17IJbpEediVPMrrY0i5Jb2jX',   // You can find this in your Auth0 app settings
 });
 
-// When the user clicks the login button
 document.getElementById("login-button").addEventListener("click", async () => {
   await auth0.loginWithRedirect({
-    redirect_uri: window.location.origin // This is the URL users will be redirected to after login
+    redirect_uri: window.location.origin // Redirect after login
   });
 });
 
+
 window.addEventListener('load', async () => {
-  // Check if the URL contains the callback information
   const query = window.location.search;
   if (query.includes('code') && query.includes('state')) {
-    // Parse the callback information and complete the login
     await auth0.handleRedirectCallback();
   }
 
-  // Get the logged-in user information
+  // Get user info after login
   const user = await auth0.getUser();
-  
   if (user) {
-    console.log(user);  // Output user details (such as name, email) in the console
-    // Optionally display the user info in the UI
+    console.log(user); // Check the user object
     document.getElementById('login-button').textContent = `Hello, ${user.name}`;
-    // Optionally hide the login button or show a logout button
   }
 });
+
 
 
 
