@@ -28,6 +28,10 @@
     </div>
 
     <button id="github-login" class="btn btn-primary mb-2" >Login with GitHub</button>
+    <div id="user-info" style="display: none;">
+        <h2>Welcome, <span id="user-name"></span>!</h2>
+        <p>You've successfully logged in. Enjoy your visit!</p>
+    </div>
 
     <script type="module">
       // Import the functions you need from the SDKs
@@ -48,26 +52,34 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
+
+      
     
       // When the login button is clicked, use signInWithRedirect
       const githubLoginButton = document.getElementById('github-login');
+      const userInfoDiv = document.getElementById('user-info');
+      const userNameSpan = document.getElementById('user-name');
+
       githubLoginButton.addEventListener('click', () => {
         const provider = new GithubAuthProvider();
         signInWithRedirect(auth, provider);
       });
     
-      // Handle the redirect result when the user is returned
-      getRedirectResult(auth)
-        .then((result) => {
-          if (result) {
-            const user = result.user;
-            console.log('User logged in:', user);
-            // Handle the user info here
-          }
-        })
-        .catch((error) => {
-          console.error('Error during login:', error);
-        });
+// Handle the result of the redirect
+getRedirectResult(auth)
+          .then((result) => {
+            if (result) {
+              const user = result.user;
+              console.log('User logged in:', user);
+
+              // Show the user info and update the name
+              userInfoDiv.style.display = 'block';
+              userNameSpan.textContent = user.displayName || 'User';
+            }
+          })
+          .catch((error) => {
+            console.error('Error during login:', error);
+          });
     </script>
 </body>
 </html>
