@@ -4,15 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <script type="text/javascript" src="JS/bootstrap.js"></script>
+    <script type="text/javascript" src="JS/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="JS/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="JS/app.js"></script>
 </head>
 <body>
     <div class="login-container">
-        <h1>Login</h1>
+        <h1 class="text-center mb-4">Login</h1>
+        <nav>
+            <ul class="list-unstyled d-flex justify-content-center">
+              <a href="index.html" class="btn btn-primary mb-2">Go to Dashboard</a>
+              <a href="post-video.html" class="btn btn-primary mb-2">Upload New Video</a>
+              <a href="search.html" class="btn btn-primary mb-2">Search</a>
+              <a href="login.html" class="btn btn-primary mb-2">Login</a>
+
+            </ul>
+          </nav>
         <p>Please login to continue</p>
     </div>
 
-    <button id="github-login">Login with GitHub</button>
+    <button id="github-login" class="btn btn-primary mb-2" >Login with GitHub</button>
 
     <script type="module">
       // Import the functions you need from the SDKs
