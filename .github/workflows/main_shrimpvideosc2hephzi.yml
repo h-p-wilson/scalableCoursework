@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy static app to Azure Web App - shrimpvideosC2Hephzi
+name: Build and deploy Node.js app to Azure Web App - shrimpvideosC2Hephzi
 
 on:
   push:
@@ -13,15 +13,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the code
-      - uses: actions/checkout@v4
-
-      # Zip the artifact for deployment
-      - name: Zip static files for deployment
-        run: |
-          zip -r release.zip ./
-
-      # Login to Azure
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -29,11 +20,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6D21C50E4A1E4B9C86EF88179595043F }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F0D0CE3D74694820B8E19576591FB802 }}
 
-      # Deploy to Azure Web App
-      - name: Deploy to Azure Web App
+      - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'shrimpvideosC2Hephzi'
           slot-name: 'Production'
-          package: release.zip
+          package: .
