@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - CourseWork2ScalableHephzi
+name: Build and deploy Static Web App to Azure Web App
 
 on:
   push:
@@ -10,16 +10,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  
   deploy:
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
 
     steps:
+      # Login to Azure
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -27,11 +25,11 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_93127092BAE74EBDBBDE80EDE3063729 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6DD4610C36BE43B2A8D87BCDCF353172 }}
 
+      # Deploy the static files
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'CourseWork2ScalableHephzi'
           slot-name: 'Production'
-          package: .
-          
+          package: ./ # Ensure the path points to the directory containing the HTML, CSS, and JS files
